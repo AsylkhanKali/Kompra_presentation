@@ -1,0 +1,1351 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kompra Partners — партнёрская программа для аудита, консалтинга и финансовых компаний в Казахстане." />
+  <title>Kompra Partners — Partner Growth Engine</title>
+  <style>
+    :root {
+      --red: #e21b23;
+      --red-dark: #b91118;
+      --ink: #0b0b0f;
+      --ink-soft: #232329;
+      --muted: #6c6f77;
+      --paper: #fbfaf8;
+      --paper-2: #f3f0eb;
+      --line: rgba(11, 11, 15, .12);
+      --line-dark: rgba(255, 255, 255, .14);
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(11, 11, 15, .12);
+      --shadow-soft: 0 18px 50px rgba(11, 11, 15, .08);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 5%, rgba(226, 27, 35, .12), transparent 28rem),
+        radial-gradient(circle at 86% 12%, rgba(226, 27, 35, .08), transparent 24rem),
+        linear-gradient(180deg, #fff 0%, var(--paper) 48%, #fff 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input { font: inherit; }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(251, 250, 248, .78);
+      border-bottom: 1px solid rgba(11, 11, 15, .08);
+    }
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -.03em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background:
+        linear-gradient(135deg, var(--red), #ff5b61 55%, var(--ink) 56%);
+      box-shadow: 0 16px 35px rgba(226, 27, 35, .28);
+    }
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #33343b;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .25s var(--ease);
+    }
+    .nav-links a:hover { background: rgba(226, 27, 35, .08); color: var(--red); }
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 900;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--red); box-shadow: 0 18px 38px rgba(226, 27, 35, .26); }
+    .btn-primary:hover { background: var(--red-dark); box-shadow: 0 20px 50px rgba(226, 27, 35, .34); }
+    .btn-dark { color: #fff; background: var(--ink); box-shadow: 0 18px 38px rgba(11, 11, 15, .18); }
+    .btn-light { background: rgba(255, 255, 255, .82); border-color: var(--line); box-shadow: var(--shadow-soft); }
+    .btn-ghost { background: transparent; border-color: var(--line); }
+    .btn-full { width: 100%; }
+
+    .hero {
+      position: relative;
+      padding: 80px 0 52px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 44px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 9px 12px;
+      border: 1px solid rgba(226, 27, 35, .2);
+      border-radius: 999px;
+      background: rgba(226, 27, 35, .07);
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 0 rgba(226, 27, 35, .55);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(226, 27, 35, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(226, 27, 35, 0); }
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      margin-bottom: 22px;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .92;
+      letter-spacing: -.075em;
+      font-weight: 950;
+    }
+    .red-text { color: var(--red); }
+    .hero-lead {
+      max-width: 670px;
+      color: #3c3f46;
+      font-size: clamp(18px, 2.2vw, 24px);
+      line-height: 1.35;
+      letter-spacing: -.025em;
+      font-weight: 650;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-note {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 28px;
+      max-width: 650px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .65);
+      color: var(--muted);
+      box-shadow: var(--shadow-soft);
+    }
+    .hero-note strong { color: var(--ink); }
+    .hero-note svg { flex: 0 0 24px; color: var(--red); }
+
+    .hero-visual {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      place-items: center;
+    }
+    .halo {
+      position: absolute;
+      inset: 48px 4px 10px;
+      border-radius: 52px;
+      background:
+        linear-gradient(135deg, rgba(226, 27, 35, .12), transparent 42%),
+        linear-gradient(180deg, #17171d, #08080a);
+      box-shadow: 0 35px 95px rgba(11, 11, 15, .27);
+      transform: rotate(-2deg);
+    }
+    .dashboard {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 520px);
+      border-radius: 34px;
+      padding: 22px;
+      color: #fff;
+      background: rgba(12, 12, 15, .86);
+      border: 1px solid rgba(255, 255, 255, .16);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, .32);
+      overflow: hidden;
+    }
+    .dashboard::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(226, 27, 35, .45), transparent 24%),
+        radial-gradient(circle at 90% 45%, rgba(255,255,255,.12), transparent 21%);
+    }
+    .dash-content { position: relative; z-index: 1; }
+    .browser-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .browser-dots { display: flex; gap: 7px; }
+    .browser-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.26); }
+    .risk-card {
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .risk-header { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .risk-title { font-size: 18px; font-weight: 950; letter-spacing: -.03em; }
+    .risk-score {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background:
+        conic-gradient(var(--red) 0 78%, rgba(255,255,255,.16) 78% 100%);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 950;
+      box-shadow: inset 0 0 0 10px rgba(10, 10, 12, .86);
+    }
+    .risk-score small { font-size: 10px; opacity: .8; }
+    .dash-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 18px; }
+    .dash-metric { padding: 14px; border-radius: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.11); }
+    .dash-metric strong { display: block; font-size: 24px; line-height: 1; letter-spacing: -.05em; }
+    .dash-metric span { color: rgba(255,255,255,.62); font-size: 12px; font-weight: 750; }
+    .flow-line { margin: 22px 0; padding: 16px; border-radius: 22px; background: #fff; color: var(--ink); }
+    .flow-line svg { width: 100%; height: auto; }
+    .checks { display: grid; gap: 10px; margin-top: 16px; }
+    .check-row { display: flex; justify-content: space-between; gap: 12px; padding: 13px 14px; border-radius: 16px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.78); }
+    .check-row strong { color: #fff; }
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      width: 210px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,255,255,.75);
+      box-shadow: 0 18px 45px rgba(11, 11, 15, .18);
+      backdrop-filter: blur(14px);
+    }
+    .floating-card strong { display: block; font-size: 30px; letter-spacing: -.06em; }
+    .floating-card span { color: var(--muted); font-size: 13px; font-weight: 800; }
+    .float-1 { left: 0; top: 22px; transform: rotate(-3deg); }
+    .float-2 { right: 0; bottom: 46px; transform: rotate(3deg); }
+
+    .stats-strip {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+    .stat {
+      padding: 26px;
+      background: rgba(255,255,255,.82);
+      min-height: 146px;
+    }
+    .stat strong { display: block; margin-bottom: 10px; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.08em; line-height: .9; }
+    .stat span { color: var(--muted); font-weight: 750; line-height: 1.35; }
+
+    section { padding: 84px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+    .section-kicker {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin-bottom: 0;
+      max-width: 780px;
+      font-size: clamp(36px, 5.5vw, 68px);
+      line-height: .96;
+      letter-spacing: -.065em;
+      font-weight: 950;
+    }
+    .section-desc {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card {
+      position: relative;
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto 18px 0;
+      height: 3px;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(90deg, transparent, rgba(226, 27, 35, .75), transparent);
+      opacity: 0;
+      transition: .28s var(--ease);
+    }
+    .card:hover::after { opacity: 1; }
+    .icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      color: var(--red);
+      background: rgba(226, 27, 35, .08);
+      margin-bottom: 18px;
+    }
+    .card h3 { margin-bottom: 10px; font-size: 24px; line-height: 1.05; letter-spacing: -.04em; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.5; font-weight: 620; }
+
+    .dark-section {
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(226, 27, 35, .28), transparent 34rem),
+        radial-gradient(circle at 84% 62%, rgba(226, 27, 35, .12), transparent 24rem),
+        linear-gradient(180deg, #121217 0%, #08080b 100%);
+    }
+    .dark-section .section-desc, .dark-section .card p { color: rgba(255,255,255,.68); }
+    .dark-section .card {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.12);
+      box-shadow: none;
+    }
+    .dark-section .icon { background: rgba(226, 27, 35, .16); color: #fff; }
+
+    .problem-solution { align-items: stretch; }
+    .big-card { min-height: 460px; display: flex; flex-direction: column; justify-content: space-between; }
+    .label-pill {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: var(--red);
+      background: rgba(226, 27, 35, .08);
+      font-weight: 950;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .big-quote {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: .98;
+      letter-spacing: -.06em;
+      font-weight: 950;
+    }
+    .chart-wrap {
+      margin-top: 24px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--white);
+    }
+    .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; color: var(--muted); font-size: 13px; font-weight: 800; }
+    .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 999px; margin-right: 7px; background: var(--red); }
+    .legend-dot.dark { background: var(--ink); }
+
+    .value-card { min-height: 320px; }
+    .value-card .value-big { display: block; margin: 22px 0 10px; font-size: 58px; line-height: .9; letter-spacing: -.08em; font-weight: 950; }
+    .value-card.partner { background: linear-gradient(135deg, rgba(226,27,35,.96), #ff4b52); color: #fff; }
+    .value-card.partner p, .value-card.partner .section-kicker { color: rgba(255,255,255,.78); }
+    .value-card.partner .icon { color: #fff; background: rgba(255,255,255,.18); }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(var(--red), rgba(226,27,35,0));
+    }
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .step-num {
+      position: relative;
+      z-index: 2;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--red);
+      font-weight: 950;
+      box-shadow: 0 14px 30px rgba(226, 27, 35, .25);
+    }
+    .step-body {
+      padding: 22px 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow-soft);
+    }
+    .step-body h3 { margin-bottom: 7px; font-size: 22px; letter-spacing: -.035em; }
+    .step-body p { margin: 0; color: var(--muted); line-height: 1.45; font-weight: 630; }
+
+    .commission-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .revenue-card {
+      position: sticky;
+      top: 104px;
+      padding: 32px;
+      border-radius: 30px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(226,27,35,.92), rgba(226,27,35,.7)),
+        url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80') center/cover;
+      overflow: hidden;
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 30px 80px rgba(226, 27, 35, .24);
+    }
+    .revenue-card h3 { max-width: 390px; font-size: 48px; line-height: .94; letter-spacing: -.06em; margin: 0; }
+    .revenue-card p { color: rgba(255,255,255,.82); font-size: 17px; line-height: 1.45; font-weight: 700; }
+    .renewal { display: flex; gap: 14px; align-items: center; padding: 18px; border-radius: 22px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.18); }
+    .renewal strong { font-size: 44px; letter-spacing: -.07em; }
+    .table-card {
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 22px 20px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: var(--red); color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+    tr:last-child td { border-bottom: 0; }
+    td strong { font-size: 19px; letter-spacing: -.02em; }
+    .tier { display: inline-flex; padding: 6px 10px; border-radius: 999px; background: rgba(226,27,35,.08); color: var(--red); font-weight: 950; }
+
+    .traction {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .photo-card {
+      min-height: 460px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(11,11,15,.12), rgba(11,11,15,.85)),
+        url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: #fff;
+      display: flex;
+      align-items: end;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .photo-card h3 { font-size: 34px; line-height: 1; letter-spacing: -.055em; margin-bottom: 10px; }
+    .traction-list { display: grid; gap: 16px; }
+    .partner-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow-soft);
+    }
+    .partner-row span { color: var(--muted); font-weight: 760; }
+    .status {
+      white-space: nowrap;
+      color: #fff;
+      background: var(--ink);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .status.red { background: var(--red); }
+
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .month-card {
+      position: relative;
+      min-height: 340px;
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.13);
+      overflow: hidden;
+    }
+    .month-card::before {
+      content: attr(data-num);
+      position: absolute;
+      right: -8px;
+      bottom: -28px;
+      font-size: 140px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.1em;
+      color: rgba(255,255,255,.06);
+    }
+    .month-card h3 { font-size: 24px; letter-spacing: -.04em; }
+    .month-card ul { padding-left: 18px; margin: 0 0 22px; color: rgba(255,255,255,.72); line-height: 1.55; font-weight: 620; }
+    .result-pill { display: inline-flex; padding: 9px 12px; border-radius: 999px; color: #fff; background: rgba(226,27,35,.9); font-size: 12px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+
+    .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .metric-card { min-height: 230px; }
+    .metric-card strong { display: block; margin-bottom: 12px; font-size: 52px; letter-spacing: -.08em; line-height: .9; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .person-card {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 26px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow-soft);
+    }
+    .avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, var(--ink) 0 48%, var(--red) 49% 100%);
+      color: #fff;
+      font-size: 40px;
+      font-weight: 950;
+      letter-spacing: -.08em;
+      box-shadow: 0 18px 40px rgba(11,11,15,.18);
+    }
+    .person-card h3 { font-size: 30px; line-height: 1; letter-spacing: -.055em; margin-bottom: 8px; }
+    .role { color: var(--red); font-weight: 950; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 20px; }
+    .chip { display: inline-flex; padding: 8px 10px; border-radius: 999px; background: var(--paper-2); color: #40434b; font-size: 12px; font-weight: 850; }
+
+    .proposal-panel {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 42px;
+      border-radius: 38px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(226,27,35,.6), transparent 25rem),
+        linear-gradient(135deg, #111117, #050506);
+      box-shadow: 0 34px 90px rgba(11,11,15,.24);
+      overflow: hidden;
+    }
+    .proposal-panel h2 { color: #fff; }
+    .proposal-panel p { color: rgba(255,255,255,.68); font-size: 18px; line-height: 1.5; font-weight: 650; }
+    .proposal-actions { display: grid; gap: 12px; }
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      color: rgba(255,255,255,.66);
+      font-weight: 700;
+    }
+    .contact-line a { color: #fff; }
+
+    footer { padding: 44px 0; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .footer-inner strong { color: var(--ink); }
+
+    dialog {
+      width: min(720px, calc(100% - 32px));
+      border: 0;
+      border-radius: 30px;
+      padding: 0;
+      box-shadow: 0 30px 90px rgba(0,0,0,.38);
+      background: #fff;
+      overflow: hidden;
+    }
+    dialog::backdrop { background: rgba(11,11,15,.62); backdrop-filter: blur(8px); }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 26px; border-bottom: 1px solid var(--line); }
+    .modal-head h3 { margin: 0; font-size: 30px; letter-spacing: -.055em; }
+    .close-btn { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 999px; background: #fff; cursor: pointer; font-weight: 950; }
+    .modal-body { padding: 26px; }
+    .resume-line { display: grid; grid-template-columns: 150px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .resume-line:last-child { border-bottom: 0; }
+    .resume-line strong { color: var(--red); text-transform: uppercase; letter-spacing: .1em; font-size: 12px; }
+    .resume-line p { margin: 0; color: #33343b; line-height: 1.5; font-weight: 650; }
+    .resume-note { margin-top: 18px; padding: 16px; border-radius: 18px; background: rgba(226,27,35,.07); color: #4b4e56; line-height: 1.45; font-weight: 650; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .commission-layout, .traction, .proposal-panel { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 540px; }
+      .stats-strip, .grid-4, .roadmap { grid-template-columns: repeat(2, 1fr); }
+      .grid-3, .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 16px; max-width: 680px; }
+      .revenue-card { position: relative; top: auto; }
+      .team-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        position: fixed;
+        top: 78px;
+        left: 20px;
+        right: 20px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255,255,255,.95);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.is-open { display: flex; }
+      .menu-btn { display: inline-flex; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .hero { padding-top: 46px; }
+      section { padding: 64px 0; }
+      .hero h1 { font-size: 46px; }
+      .hero-lead { font-size: 18px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-visual { min-height: auto; padding-top: 20px; }
+      .halo, .floating-card { display: none; }
+      .dashboard { border-radius: 26px; padding: 16px; }
+      .dash-metrics { grid-template-columns: 1fr; }
+      .stats-strip, .grid-2, .grid-3, .grid-4, .roadmap, .metrics-grid { grid-template-columns: 1fr; }
+      .stat { min-height: auto; }
+      .big-card { min-height: 370px; }
+      .person-card { grid-template-columns: 1fr; }
+      .avatar { width: 100%; height: 118px; }
+      th, td { padding: 16px 12px; font-size: 14px; }
+      .table-card { overflow-x: auto; }
+      table { min-width: 680px; }
+      .proposal-panel { padding: 28px; border-radius: 28px; }
+      .modal-head, .modal-body { padding: 20px; }
+      .resume-line { grid-template-columns: 1fr; gap: 7px; }
+    }
+
+
+    /* Premium visual polish v2 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(11,11,15,.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(11,11,15,.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at 50% 8%, black, transparent 72%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20% -10% auto -10%;
+      height: 620px;
+      z-index: -3;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(226,27,35,.23), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(11,11,15,.12), transparent 30%),
+        radial-gradient(circle at 65% 78%, rgba(226,27,35,.12), transparent 26%);
+      filter: blur(8px);
+    }
+    .nav::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 3px;
+      transform-origin: left center;
+      transform: scaleX(var(--scroll-progress, 0));
+      background: linear-gradient(90deg, var(--red), #ff777c, var(--ink));
+    }
+    .brand-mark {
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.48), transparent);
+      transform: translateX(-120%);
+      animation: shine 4.8s infinite;
+    }
+    @keyframes shine { 18%, 100% { transform: translateX(130%); } }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      width: min(980px, 92vw);
+      height: min(980px, 92vw);
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(226,27,35,.10), transparent 62%);
+      z-index: -1;
+    }
+    .eyebrow {
+      color: #fff;
+      background: linear-gradient(135deg, rgba(11,11,15,.96), rgba(35,35,41,.96));
+      border-color: rgba(11,11,15,.2);
+      box-shadow: 0 16px 34px rgba(11,11,15,.12);
+    }
+    .eyebrow .pulse-dot { background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,.55); }
+    .red-text {
+      background: linear-gradient(100deg, #e21b23 0%, #ff585f 52%, #9f0e14 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero h1 {
+      text-wrap: balance;
+      text-shadow: 0 16px 60px rgba(11,11,15,.08);
+    }
+    .hero-lead { text-wrap: pretty; }
+    .btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0;
+      background: radial-gradient(circle at 30% 0%, rgba(255,255,255,.45), transparent 34%);
+      transition: opacity .25s var(--ease);
+    }
+    .btn:hover::after { opacity: 1; }
+    .dashboard { animation: floatSoft 7s ease-in-out infinite; }
+    .floating-card { animation: floatSoft 6.2s ease-in-out infinite; }
+    .float-2 { animation-delay: -2.4s; }
+    @keyframes floatSoft { 50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); } }
+    .float-1 { --rot: -3deg; }
+    .float-2 { --rot: 3deg; }
+    .card, .person-card, .partner-row, .table-card, .step-body, .proposal-panel, .stats-strip {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .card, .person-card, .partner-row, .month-card, .metric-card {
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+    }
+    .card:hover, .person-card:hover, .partner-row:hover, .month-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(226,27,35,.22);
+      box-shadow: 0 28px 72px rgba(11,11,15,.12);
+    }
+    .dark-section .card:hover, .dark-section .month-card:hover { box-shadow: 0 24px 70px rgba(0,0,0,.22); }
+    .stat {
+      position: relative;
+      overflow: hidden;
+    }
+    .stat::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(226,27,35,.08), transparent 52%);
+      opacity: 0;
+      transition: opacity .3s var(--ease);
+    }
+    .stat:hover::before { opacity: 1; }
+    .revenue-card, .photo-card, .proposal-panel {
+      background-blend-mode: multiply;
+    }
+    .roadmap { counter-reset: phase; }
+    .person-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .person-card::before {
+      content: "";
+      position: absolute;
+      right: -74px;
+      top: -74px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(226,27,35,.14), transparent 70%);
+    }
+    .person-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .person-actions .btn { min-height: 44px; padding: 12px 16px; }
+    .modal-actions { margin-top: 14px; }
+    .modal-actions .btn { min-height: 44px; padding: 12px 16px; }
+    .proposal-actions {
+      padding: 16px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    footer { background: rgba(255,255,255,.56); backdrop-filter: blur(14px); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Главная навигация">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Kompra Partners">
+        <span class="brand-mark">K</span>
+        <span>Kompra<br><small>Partners</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">Меню</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#solution">Решение</a>
+        <a href="#program">Программа</a>
+        <a href="#commission">Комиссия</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#team">Команда</a>
+        <a href="#proposal">Документы</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span> Kompra Partners</div>
+          <h1>Kompra выходит к тысячам компаний <span class="red-text">через партнёров</span></h1>
+          <p class="hero-lead">Партнёрская программа для аудиторских, консалтинговых и финансовых компаний: аудиторы уже проверяют контрагентов каждый день — Kompra делает это в одном окне за 3 минуты.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://drive.google.com/file/d/14W_eIgeY3csSbg6VOReNn5pf-KvvompF/view?usp=sharing" target="_blank" rel="noopener">Открыть предложение</a>
+            <a class="btn btn-dark" href="https://t.me/KompraCheckBot" target="_blank" rel="noopener">Запустить Telegram bot</a>
+            <a class="btn btn-light" href="#team">Резюме команды</a>
+          </div>
+          <div class="hero-note">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2 3 6v6c0 5.1 3.8 9.9 9 10 5.2-.1 9-4.9 9-10V6l-9-4Zm0 3.2 6 2.7V12c0 3.6-2.4 6.7-6 7-3.6-.3-6-3.4-6-7V7.9l6-2.7Zm3.7 5.2-4.4 4.4-2-2-1.4 1.4 3.4 3.4 5.8-5.8-1.4-1.4Z"/></svg>
+            <div><strong>Единый путь подключения:</strong> заявка → демо → обучение → сертификат → продажи → рост уровня партнёра.</div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Визуализация платформы Kompra">
+          <div class="halo" aria-hidden="true"></div>
+          <div class="floating-card float-1"><strong>78</strong><span>критериев проверки</span></div>
+          <div class="floating-card float-2"><strong>25–35%</strong><span>комиссия в первый год</span></div>
+          <div class="dashboard">
+            <div class="dash-content">
+              <div class="browser-top"><div class="browser-dots"><span></span><span></span><span></span></div><span>about.kompra.kz/api</span></div>
+              <div class="risk-card">
+                <div class="risk-header">
+                  <div>
+                    <div class="risk-title">Counterparty Risk Report</div>
+                    <p style="margin:8px 0 0;color:rgba(255,255,255,.62);font-weight:700;line-height:1.4">Факторы риска, судебные дела, аффилированность и налоговые задолженности в одном отчёте.</p>
+                  </div>
+                  <div class="risk-score"><div>3<small>мин</small></div></div>
+                </div>
+                <div class="dash-metrics">
+                  <div class="dash-metric"><strong>KYC</strong><span>комплаенс</span></div>
+                  <div class="dash-metric"><strong>API</strong><span>интеграция</span></div>
+                  <div class="dash-metric"><strong>КГД</strong><span>источники РК</span></div>
+                </div>
+              </div>
+              <div class="flow-line" aria-hidden="true">
+                <svg viewBox="0 0 470 105" role="img" aria-label="Kompra → Partner → Clients">
+                  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#e21b23"/></marker></defs>
+                  <rect x="0" y="14" width="116" height="58" rx="20" fill="#0b0b0f"/><text x="58" y="49" text-anchor="middle" fill="#fff" font-size="16" font-weight="900">KOMPRA</text>
+                  <line x1="126" y1="43" x2="176" y2="43" stroke="#e21b23" stroke-width="4" marker-end="url(#arrow)"/>
+                  <rect x="184" y="14" width="116" height="58" rx="20" fill="#e21b23"/><text x="242" y="49" text-anchor="middle" fill="#fff" font-size="16" font-weight="900">ПАРТНЁР</text>
+                  <line x1="310" y1="43" x2="360" y2="43" stroke="#e21b23" stroke-width="4" marker-end="url(#arrow)"/>
+                  <rect x="368" y="14" width="102" height="58" rx="20" fill="#f3f0eb"/><text x="419" y="49" text-anchor="middle" fill="#0b0b0f" font-size="16" font-weight="900">КЛИЕНТЫ</text>
+                </svg>
+              </div>
+              <div class="checks">
+                <div class="check-row"><span>Налоговая осмотрительность</span><strong>✓</strong></div>
+                <div class="check-row"><span>Due diligence сценарии</span><strong>✓</strong></div>
+                <div class="check-row"><span>Шаблоны отчётов</span><strong>✓</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container reveal">
+        <div class="stats-strip" aria-label="Ключевые показатели">
+          <div class="stat"><strong data-count="4">0</strong><span>реальных созвона за неделю</span></div>
+          <div class="stat"><strong data-count="3">0</strong><span>подписанных партнёра</span></div>
+          <div class="stat"><strong>10%</strong><span>рекуррентный доход с продлений</span></div>
+          <div class="stat"><strong>30</strong><span>дней бесплатного демо-доступа</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="solution">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Проблема → решение</div>
+            <h2>Прямые продажи имеют потолок. Партнёрский канал масштабируется быстрее.</h2>
+          </div>
+          <p class="section-desc">Один продавец даёт один поток клиентов. Аудиторы и консультанты уже имеют доверие и доступ к сотням компаний.</p>
+        </div>
+        <div class="grid-2 problem-solution">
+          <article class="card big-card reveal">
+            <span class="label-pill">Проблема</span>
+            <p class="big-quote">Реклама и менеджеры — дорого и медленно.</p>
+            <p>Рост клиентской базы упирается в стоимость привлечения и количество продавцов.</p>
+            <div class="chart-wrap">
+              <svg viewBox="0 0 520 210" width="100%" role="img" aria-label="Сравнение роста прямых продаж и партнёрского канала">
+                <path d="M34 20v155h450" fill="none" stroke="#d9d5cf" stroke-width="2"/>
+                <path d="M44 160 C110 150 160 144 210 142 C260 141 322 139 382 137 C420 136 452 136 484 136" fill="none" stroke="#0b0b0f" stroke-width="5" stroke-linecap="round"/>
+                <path d="M44 160 C100 148 148 137 190 126 C240 112 292 92 336 68 C390 39 436 26 484 21" fill="none" stroke="#e21b23" stroke-width="5" stroke-linecap="round"/>
+                <text x="44" y="198" fill="#6c6f77" font-size="13" font-weight="800">время →</text>
+                <text x="342" y="130" fill="#0b0b0f" font-size="13" font-weight="900">прямые продажи</text>
+                <text x="318" y="50" fill="#e21b23" font-size="13" font-weight="900">через партнёров</text>
+              </svg>
+              <div class="chart-legend"><span><i class="legend-dot dark"></i>Прямые продажи</span><span><i class="legend-dot"></i>Через партнёров</span></div>
+            </div>
+          </article>
+          <article class="card big-card reveal">
+            <span class="label-pill">Решение</span>
+            <p class="big-quote">Продавать чужими руками — через тех, у кого клиенты уже есть.</p>
+            <p>Партнёр встраивает Kompra в аудит, консалтинг, due diligence и налоговую проверку. Клиент получает проверку в привычной услуге, а Kompra — канал продаж без расширения отдела продаж.</p>
+            <div class="grid-3" style="gap:10px;margin-top:22px">
+              <div class="dash-metric" style="background:#fff;border:1px solid var(--line);color:var(--ink)"><strong>Kompra</strong><span>продукт + API</span></div>
+              <div class="dash-metric" style="background:#fff;border:1px solid var(--line);color:var(--ink)"><strong>Партнёр</strong><span>аудит / консалтинг</span></div>
+              <div class="dash-metric" style="background:#fff;border:1px solid var(--line);color:var(--ink)"><strong>Клиенты</strong><span>бизнес по РК</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="profile">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Профиль партнёра</div>
+            <h2>Почему именно аудит и консалтинг</h2>
+          </div>
+          <p class="section-desc">Проверка контрагента уже встроена в профессию этих компаний — Kompra просто ускоряет и усиливает процесс.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card reveal"><div class="icon">01</div><h3>Аудиторские компании</h3><p>Проверка контрагентов как часть аудита и подтверждения достоверности отчётности.</p></article>
+          <article class="card reveal"><div class="icon">02</div><h3>Консалтинг и Big Four</h3><p>Сопровождение сделок, оценка рисков и авторитетная рекомендация для клиента.</p></article>
+          <article class="card reveal"><div class="icon">03</div><h3>Due Diligence консультанты</h3><p>Комплексная проверка компаний перед M&A, инвестициями и партнёрствами.</p></article>
+          <article class="card reveal"><div class="icon">04</div><h3>Финансовые и налоговые советники</h3><p>Оценка налоговых рисков и благонадёжности контрагентов клиента.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="value">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Ценностное предложение</div>
+            <h2>Выигрывают все трое</h2>
+          </div>
+          <p class="section-desc">Партнёр зарабатывает, Kompra масштабируется, клиент получает защиту от рисков.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card value-card partner reveal"><div class="icon">↗</div><h3>Партнёр</h3><span class="value-big">20–35%</span><p>Новый доход, усиление своей услуги и отсутствие затрат на разработку собственного продукта.</p></article>
+          <article class="card value-card reveal"><div class="icon">K</div><h3>Kompra</h3><span class="value-big">↓ CAC</span><p>Клиенты без прямых продаж, встраивание в стек партнёра и более дешёвое привлечение.</p></article>
+          <article class="card value-card reveal"><div class="icon">✓</div><h3>Клиент</h3><span class="value-big">Risk↓</span><p>Защита от неблагонадёжных контрагентов, налоговых проблем и ручных проверок.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Партнёрская программа</div>
+            <h2>Единый процесс входа — от демо до полного партнёрства</h2>
+          </div>
+          <p class="section-desc">Не «всё сразу», а понятная лестница: тест, внедрение, обучение, продажи и улучшение программы по метрикам.</p>
+        </div>
+        <div class="timeline">
+          <div class="step reveal"><div class="step-num">0</div><div class="step-body"><h3>Демо-доступ на 30 дней</h3><p>Партнёр тестирует сервис на реальных задачах без обязательств и принимает осознанное решение о продолжении.</p></div></div>
+          <div class="step reveal"><div class="step-num">0+</div><div class="step-body"><h3>Пайплайн встраивания</h3><p>Определяем точки проверки, выбираем веб/API формат, выдаём доступы и запускаем пилот на одном процессе.</p></div></div>
+          <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h3>Лицензии сотрудникам</h3><p>Команда партнёра использует Kompra в работе и может продавать сервис клиентам, получая комиссию.</p></div></div>
+          <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h3>Сертификация</h3><p>Вебинары, обучение интерпретации отчётов и статус Certified Kompra Partner для специалистов.</p></div></div>
+          <div class="step reveal"><div class="step-num">3</div><div class="step-body"><h3>Техническая поддержка</h3><p>Вторая линия поддержки, база знаний, помощь с API и рабочими сценариями.</p></div></div>
+          <div class="step reveal"><div class="step-num">4–6</div><div class="step-body"><h3>Уровни, метрики и полное партнёрство</h3><p>Silver → Gold → Platinum, анализ фидбэка, Agile-цикл улучшений и стратегическое сотрудничество.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="commission">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Финансовая модель</div>
+            <h2>Чем больше клиентов приводит партнёр — тем выше ставка</h2>
+          </div>
+          <p class="section-desc">Доход за привлечение нового клиента + рекуррентный доход за удержание.</p>
+        </div>
+        <div class="commission-layout">
+          <aside class="revenue-card reveal">
+            <div>
+              <span class="label-pill" style="background:rgba(255,255,255,.16);color:#fff">Recurring revenue</span>
+              <h3 style="margin-top:18px">Комиссия превращается в стабильный доход</h3>
+            </div>
+            <div>
+              <p>Основное вознаграждение партнёр получает за привлечение, а дальше — стабильный процент с продления подписки клиента.</p>
+              <div class="renewal"><strong>10%</strong><span>с каждого продления подписки клиента</span></div>
+            </div>
+          </aside>
+          <div class="table-card reveal">
+            <table aria-label="Комиссионная сетка партнёров Kompra">
+              <thead><tr><th>Уровень</th><th>Клиентов</th><th>Комиссия 1-й год</th><th>Дополнительно</th></tr></thead>
+              <tbody>
+                <tr><td><strong class="tier">Silver</strong></td><td>до 5</td><td><strong>25%</strong></td><td>API, поддержка, сертификация специалистов</td></tr>
+                <tr><td><strong class="tier">Gold</strong></td><td>5–15</td><td><strong>30%</strong></td><td>Совместный маркетинг и приоритет в обучении</td></tr>
+                <tr><td><strong class="tier">Platinum</strong></td><td>более 15</td><td><strong>35%</strong></td><td>Приоритетная поддержка, персональный менеджер, влияние на продукт</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="traction">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Traction</div>
+            <h2>Это уже не теория</h2>
+          </div>
+          <p class="section-desc">Гипотеза проверена через реальные созвоны, подписанных партнёров и soft commit.</p>
+        </div>
+        <div class="traction">
+          <div class="photo-card reveal"><div><h3>4 созвона · 3 партнёра</h3><p>Первый контракт уже подписан — программа переходит от идеи к пилоту.</p></div></div>
+          <div class="traction-list">
+            <div class="partner-row reveal"><div><strong>ТОО «Тренинг Плюс 2020»</strong><br><span>Подтверждённый партнёр</span></div><span class="status red">signed</span></div>
+            <div class="partner-row reveal"><div><strong>ТОО «Международная планета обучения»</strong><br><span>Подтверждённый партнёр</span></div><span class="status red">signed</span></div>
+            <div class="partner-row reveal"><div><strong>ТОО «Turan Business Academy»</strong><br><span>Подтверждённый партнёр</span></div><span class="status red">signed</span></div>
+            <div class="partner-row reveal"><div><strong>KPMG</strong><br><span>Экспертная валидация и soft commit</span></div><span class="status">soft commit</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="roadmap">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Roadmap запуска</div>
+            <h2>От MVP до масштаба за 6 месяцев</h2>
+          </div>
+          <p class="section-desc">Первый результат — за 30 дней. Каждая фаза опирается на метрики предыдущей.</p>
+        </div>
+        <div class="roadmap">
+          <article class="month-card reveal" data-num="1"><span class="result-pill">Месяц 1</span><h3>Запуск MVP</h3><ul><li>Партнёрский договор</li><li>Сетка комиссий</li><li>Кабинет, API, песочница</li></ul><p><strong>Результат:</strong><br>программа готова к подключению</p></article>
+          <article class="month-card reveal" data-num="2"><span class="result-pill">Месяц 2</span><h3>Онбординг</h3><ul><li>Демо</li><li>Обучение</li><li>Сертификация</li></ul><p><strong>Результат:</strong><br>4 партнёра сертифицированы</p></article>
+          <article class="month-card reveal" data-num="3"><span class="result-pill">Месяц 3–4</span><h3>Пилот и продажи</h3><ul><li>Встраивание в процессы</li><li>Первые клиенты</li><li>Сбор фидбэка</li></ul><p><strong>Результат:</strong><br>первые сделки и Agile-цикл</p></article>
+          <article class="month-card reveal" data-num="4"><span class="result-pill">Месяц 5–6</span><h3>Масштаб</h3><ul><li>Big Four</li><li>Оптимизация по метрикам</li><li>Рост уровней</li></ul><p><strong>Результат:</strong><br>растёт партнёрская выручка</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Метрики эффективности</div>
+            <h2>Модель измерима и готова к управлению</h2>
+          </div>
+          <p class="section-desc">Показатели показывают, работает ли канал, и помогают улучшать продукт на реальном фидбэке партнёров.</p>
+        </div>
+        <div class="metrics-grid">
+          <article class="card metric-card reveal"><strong>↓ CAC</strong><h3>Дешевле прямых продаж</h3><p>Сравниваем стоимость привлечения через партнёров против классического sales-канала.</p></article>
+          <article class="card metric-card reveal"><strong>≥ 3</strong><h3>LTV / CAC</h3><p>Здоровая юнит-экономика: клиент приносит кратно больше, чем стоило его привлечение.</p></article>
+          <article class="card metric-card reveal"><strong>% ARR</strong><h3>Доля партнёрской выручки</h3><p>Измеряем вклад партнёрского канала в общий доход Kompra.</p></article>
+          <article class="card metric-card reveal"><strong>KPI</strong><h3>Для Kompra</h3><p>Партнёры, сертифицированные специалисты, новые клиенты и выручка канала.</p></article>
+          <article class="card metric-card reveal"><strong>KPI</strong><h3>Для партнёра</h3><p>Рекомендации клиентам, комиссионный доход, активные клиенты и продления.</p></article>
+          <article class="card metric-card reveal"><strong>Agile</strong><h3>Цикл улучшений</h3><p>Сбор фидбэка → анализ → идеи → внедрение → повторный замер.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Команда</div>
+            <h2>Кто запускает партнёрскую программу</h2>
+          </div>
+          <p class="section-desc">Краткая информация видна сразу на сайте, а полные резюме открываются отдельными кнопками через Google Drive.</p>
+        </div>
+        <div class="team-grid">
+          <article class="person-card reveal">
+            <div class="avatar" aria-hidden="true">AK</div>
+            <div>
+              <h3>Асылхан Кали</h3>
+              <div class="role">Technical Startup Founder</div>
+              <p>Студент New York University Abu Dhabi. 4 года опыта в техническом стартап-направлении.</p>
+              <div class="chips"><span class="chip">NYU Abu Dhabi</span><span class="chip">Startup Founder</span><span class="chip">4 года опыта</span></div>
+              <div class="person-actions"><a class="btn btn-primary" href="https://drive.google.com/file/d/10vKLOz8Lqqg44J-qRQdz2-DZyoKLzWHG/view?usp=sharing" target="_blank" rel="noopener">Открыть CV</a><button class="btn btn-ghost" type="button" data-modal="asylkhan">Кратко на сайте</button></div>
+            </div>
+          </article>
+          <article class="person-card reveal">
+            <div class="avatar" aria-hidden="true">AB</div>
+            <div>
+              <h3>Айганым Бектасова</h3>
+              <div class="role">Big Data Analyst</div>
+              <p>Студентка Astana IT University. 2 года опыта в Big Data Analysis и аналитическом направлении.</p>
+              <div class="chips"><span class="chip">Astana IT University</span><span class="chip">Big Data Analysis</span><span class="chip">2 года опыта</span></div>
+              <div class="person-actions"><a class="btn btn-primary" href="https://drive.google.com/file/d/14W_eIgeY3csSbg6VOReNn5pf-KvvompF/view?usp=sharing" target="_blank" rel="noopener">Открыть CV</a><button class="btn btn-ghost" type="button" data-modal="aiganym">Кратко на сайте</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proposal">
+      <div class="container">
+        <div class="proposal-panel reveal">
+          <div>
+            <div class="section-kicker">Точка входа</div>
+            <h2>Готовы запустить пилот</h2>
+            <p>Kompra меняет небольшой процент на доступ к сотням чужих клиентов, которых не пришлось искать самой. Откройте партнёрское предложение, протестируйте бота или свяжитесь с командой.</p>
+            <div class="contact-line">
+              <a href="mailto:sales@kompra.kz">sales@kompra.kz</a>
+              <span>·</span>
+              <a href="tel:+77001557272">+7 700 155 72 72</a>
+              <span>·</span>
+              <a href="https://about.kompra.kz/api" target="_blank" rel="noopener">about.kompra.kz/api</a>
+            </div>
+          </div>
+          <div class="proposal-actions">
+            <a class="btn btn-primary btn-full" href="https://drive.google.com/file/d/14W_eIgeY3csSbg6VOReNn5pf-KvvompF/view?usp=sharing" target="_blank" rel="noopener">Открыть партнёрское предложение</a>
+            <a class="btn btn-light btn-full" href="kompra_audit_partner_program.pdf" target="_blank">Открыть PDF из архива сайта</a>
+            <a class="btn btn-dark btn-full" href="https://t.me/KompraCheckBot" target="_blank" rel="noopener">Перейти в Telegram bot</a>
+            <a class="btn btn-ghost btn-full" style="color:#fff;border-color:rgba(255,255,255,.25)" href="https://drive.google.com/file/d/10vKLOz8Lqqg44J-qRQdz2-DZyoKLzWHG/view?usp=sharing" target="_blank" rel="noopener">CV Асылхан Кали</a>
+            <a class="btn btn-ghost btn-full" style="color:#fff;border-color:rgba(255,255,255,.25)" href="https://drive.google.com/file/d/14W_eIgeY3csSbg6VOReNn5pf-KvvompF/view?usp=sharing" target="_blank" rel="noopener">CV Айганым Бектасова</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>Kompra Partners</strong></div>
+      <div>Сайт-пилот для презентации партнёрской программы</div>
+    </div>
+  </footer>
+
+  <dialog id="asylkhan">
+    <div class="modal-head"><h3>Резюме · Асылхан Кали</h3><button class="close-btn" type="button" data-close>×</button></div>
+    <div class="modal-body">
+      <div class="resume-line"><strong>Профиль</strong><p>Technical Startup Founder, студент New York University Abu Dhabi.</p></div>
+      <div class="resume-line"><strong>Опыт</strong><p>4 года опыта в запуске и развитии технических стартап-проектов.</p></div>
+      <div class="resume-line"><strong>Роль в проекте</strong><p>Техническая стратегия, продуктовая логика, API-подключение и развитие партнёрского канала.</p></div>
+      <div class="resume-line"><strong>Фокус</strong><p>Превратить Kompra из инструмента проверки в масштабируемую партнёрскую инфраструктуру для аудиторов и консультантов.</p></div>
+      <div class="resume-note">Полное резюме доступно по ссылке на Google Drive.<div class="modal-actions"><a class="btn btn-primary" href="https://drive.google.com/file/d/10vKLOz8Lqqg44J-qRQdz2-DZyoKLzWHG/view?usp=sharing" target="_blank" rel="noopener">Открыть полное CV</a></div></div>
+    </div>
+  </dialog>
+
+  <dialog id="aiganym">
+    <div class="modal-head"><h3>Резюме · Айганым Бектасова</h3><button class="close-btn" type="button" data-close>×</button></div>
+    <div class="modal-body">
+      <div class="resume-line"><strong>Профиль</strong><p>Big Data Analyst, студентка Astana IT University.</p></div>
+      <div class="resume-line"><strong>Опыт</strong><p>2 года опыта в аналитике данных, структурировании информации и работе с бизнес-процессами.</p></div>
+      <div class="resume-line"><strong>Роль в проекте</strong><p>Аналитика партнёрской модели, метрики эффективности, оформление ценностного предложения и roadmap внедрения.</p></div>
+      <div class="resume-line"><strong>Фокус</strong><p>Сделать партнёрскую программу измеримой: KPI, фидбэк, Agile-цикл улучшений и рост партнёрской выручки.</p></div>
+      <div class="resume-note">Полное резюме доступно по ссылке на Google Drive.<div class="modal-actions"><a class="btn btn-primary" href="https://drive.google.com/file/d/14W_eIgeY3csSbg6VOReNn5pf-KvvompF/view?usp=sharing" target="_blank" rel="noopener">Открыть полное CV</a></div></div>
+    </div>
+  </dialog>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('#navLinks');
+
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      document.documentElement.style.setProperty('--scroll-progress', progress.toFixed(4));
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    menuBtn?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('is-open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.count || 0);
+        const duration = 900;
+        const start = performance.now();
+        const tick = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: .55 });
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dialog = document.getElementById(btn.dataset.modal);
+        if (dialog?.showModal) dialog.showModal();
+      });
+    });
+    document.querySelectorAll('[data-close]').forEach(btn => {
+      btn.addEventListener('click', () => btn.closest('dialog')?.close());
+    });
+    document.querySelectorAll('dialog').forEach(dialog => {
+      dialog.addEventListener('click', event => {
+        const rect = dialog.getBoundingClientRect();
+        const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+        if (outside) dialog.close();
+      });
+    });
+  </script>
+</body>
+</html>
